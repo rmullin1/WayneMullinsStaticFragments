@@ -8,8 +8,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DataEntryFragment.DataEntryListener, DataDisplayFragment.DataAddButtonListener {
+
+    @Override
+    public void onDataEntry(double value1, double value2) {
+        //handle event callback from DataEntryFragment
+        DataDisplayFragment displayFragment = (DataDisplayFragment) getSupportFragmentManager().findFragmentById(R.id.dataDisplayFragment);
+        displayFragment.setValue1(value1);
+        displayFragment.setValue2(value2);
+        displayFragment.multiply();
+        displayFragment.displayProduct();
+    }
+
+    @Override
+    public void onDataAdd(DataDisplayFragment fragment) {
+        //handle event callback from DataEntryFragment
+        DataEntryFragment dataEntryFragment = (DataEntryFragment)getSupportFragmentManager().findFragmentById(R.id.dataEntryFragment);
+        double value1 = dataEntryFragment.getValue1();
+        double value2 = dataEntryFragment.getValue2();
+        DataDisplayAddFragment displayAddFragment = (DataDisplayAddFragment) getSupportFragmentManager().findFragmentById(R.id.dataDisplayAddFragment);
+        displayAddFragment.setValue1(value1);
+        displayAddFragment.setValue2(value2);
+        displayAddFragment.add();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

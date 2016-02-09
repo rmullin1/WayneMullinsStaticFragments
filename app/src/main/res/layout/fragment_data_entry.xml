@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Enter 2 numbers"
+        android:text="@string/Enter2Numbers"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal" />
 
@@ -27,8 +27,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MULTIPLY"
-        android:id="@+id/button"
+        android:text="@string/Multiply"
+        android:id="@+id/multiplyButton"
         android:layout_gravity="center_horizontal" />
-    
+
 </LinearLayout>

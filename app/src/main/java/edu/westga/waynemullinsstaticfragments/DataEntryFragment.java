@@ -16,9 +16,18 @@ import android.widget.EditText;
  */
 public class DataEntryFragment extends Fragment {
 
-    private EditText number1Text;
-    private EditText number2Text;
+    private EditText value1Text;
+    private EditText value2Text;
     private DataEntryListener listener;
+
+    public double getValue1() {
+        return Double.parseDouble(this.value1Text.getText().toString());
+    }
+
+    public double getValue2() {
+        return Double.parseDouble(this.value2Text.getText().toString());
+    }
+
 
     public interface DataEntryListener {
         void onDataEntry(double value1, double value2);
@@ -32,11 +41,11 @@ public class DataEntryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View theView = inflater.inflate(R.layout.fragment_data_entry, container, false);
         // Inflate the layout for this fragment
-        this.number1Text = (EditText) theView.findViewById(R.id.editText);
-        this.number2Text = (EditText) theView.findViewById(R.id.editText2);
-        Button multiplyButton = (Button) theView.findViewById(R.id.button);
+        View theView = inflater.inflate(R.layout.fragment_data_entry, container, false);
+        this.value1Text = (EditText) theView.findViewById(R.id.editText);
+        this.value2Text = (EditText) theView.findViewById(R.id.editText2);
+        Button multiplyButton = (Button) theView.findViewById(R.id.multiplyButton);
         //anonymous class to handle onClick
         multiplyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -48,9 +57,9 @@ public class DataEntryFragment extends Fragment {
 
     //Multiply button click handler
     private void multiplyButtonClicked(View v) {
-        double number1 = Double.parseDouble(this.number1Text.getText().toString());
-        double number2 = Double.parseDouble(this.number2Text.getText().toString());
-        listener.onDataEntry(number1, number2);
+        double value1 = Double.parseDouble(this.value1Text.getText().toString());
+        double value2 = Double.parseDouble(this.value2Text.getText().toString());
+        listener.onDataEntry(value1, value2);
     }
 
     @Override
